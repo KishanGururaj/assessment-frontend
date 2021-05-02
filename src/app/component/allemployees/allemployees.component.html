@@ -1,0 +1,37 @@
+<div class="row">
+  <div  class="col-lg-9 col-sm-12 mt-5">
+      <input type="text" placeholder="enter username" [(ngModel)]="searchtext" class="form-control">
+  </div>
+  <div class="col-lg-3 col-sm-12 mt-5">
+      <button type="button" class="btn btn-info">Search</button>
+  </div>
+  <div style="width:800px; margin:0 auto;padding:20px 0;"></div>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">UserName</th>
+        <th scope="col">FirstName</th>
+        <th scope="col">LastName</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone No</th>
+        <th scope="col">Password</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | searchPipe:searchtext">
+        <td>{{user.id}}</td>
+        <td>{{user.userName}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.emailId}}</td>
+        <td>{{user.phoneNo}}</td>
+        <td>{{user.password}}</td>
+        <td><button class = "btn btn-success" (click) = "updateUser(user.id)">Update</button></td> 
+        <td><button class = "btn btn-danger" (click) = "removeUser(user.userName)">Delete</button></td>
+     </tr>
+    </tbody>
+  </table>
